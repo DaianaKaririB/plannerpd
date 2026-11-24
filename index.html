@@ -108,6 +108,8 @@ button.lab:hover .tt{color:var(--blue);text-decoration:underline}
 .meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px;color:var(--mute);align-items:center}
 .sys{display:inline-flex;align-items:center;gap:6px}
 .sys i{width:10px;height:10px;border-radius:999px;flex:none}
+.stag{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;max-width:100%;padding:3px 10px 3px 8px;border-radius:999px;font-size:12.5px;font-weight:800;line-height:1.3;background:color-mix(in srgb,var(--c) 18%,var(--card));color:color-mix(in srgb,var(--c) 62%,var(--ink));border:1.5px solid color-mix(in srgb,var(--c) 45%,transparent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stag i{width:9px;height:9px;border-radius:999px;background:var(--c);flex:none}
 .pr{display:inline-flex;align-items:center;gap:5px}
 .sig{display:inline-flex;align-items:flex-end;gap:2px;height:12px}
 .sig i{width:4px;border-radius:1px;background:var(--line)}
@@ -398,7 +400,7 @@ function render(){
     const cl=a<mon,cr=b>last;
     if(si>n-1){si=n-1}if(ei<si){ei=si}
     const range=+a===+b?`${a.getDate()} ${M[a.getMonth()]}`:`${a.getDate()}${a.getMonth()===b.getMonth()?'':' '+M[a.getMonth()]}–${b.getDate()} ${M[b.getMonth()]}`;
-    h+=`<div class="row"><button class="lab" data-id="${esc(d.id)}"><span class="tt">${esc(d.title)}</span><span class="meta"><span class="sys"><i style="background:${esc(s.color)}"></i>${esc(s.name)}</span><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span><span class="prt">${p[1]}</span></span></span></button>`+
+    h+=`<div class="row"><button class="lab" data-id="${esc(d.id)}"><span class="stag" style="--c:${esc(s.color)}"><i></i>${esc(s.name)}</span><span class="tt">${esc(d.title)}</span><span class="meta"><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span><span class="prt">${p[1]}</span></span></span></button>`+
       days.map((x,i)=>`<div class="day${isT(x)?' today':''}" style="grid-column:${i+2}"></div>`).join('')+
       `<button class="bar st-${esc(d.status)}${cl?' cl':''}${cr?' cr':''}" data-id="${esc(d.id)}" style="grid-column:${si+2}/${ei+3}" title="${esc(d.title)} · ${stName(d.status)} · ${range}"><strong>${cl?'‹ ':''}${stName(d.status)}${cr?' ›':''}</strong><span>${range}</span></button></div>`;
   }
@@ -414,7 +416,7 @@ function render(){
   const nb=groups.reduce((t,g)=>t+g[2].length,0);
   $('#blT').textContent=`${nb} demanda${nb===1?'':'s'}`;
   $('#bl').innerHTML=nb?'':'<p class="note" style="margin:0">Backlog vazio.</p>';$('#bl').innerHTML+=groups.filter(g=>g[2].length).map(([t,ic,ds,e])=>`<div class="col"><h3><span class="t"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-${ic}"/></svg></span>${t}</span><span class="c">${ds.length}</span></h3>${ds.length?ds.map(d=>{const s=sysOf(d.sys),p=prOf(d.pri);
-    return `<div class="card"><button class="open" data-id="${esc(d.id)}"><span class="tt">${esc(d.title)}</span><span class="meta"><span class="sys"><i style="background:${esc(s.color)}"></i>${esc(s.name)}</span><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span>${p[1]}</span></span><span class="meta"><span class="pill st-${esc(d.status)}">${stName(d.status)}</span>${fmt(d)}</span></button><button class="btn sm" data-plan="${esc(d.id)}" title="Planejar na semana exibida"><svg class="ic s" aria-hidden="true"><use href="#i-arrow"/></svg>Trazer</button></div>`}).join(''):`<p class="e">${e}</p>`}</div>`).join('');
+    return `<div class="card"><button class="open" data-id="${esc(d.id)}"><span class="stag" style="--c:${esc(s.color)}"><i></i>${esc(s.name)}</span><span class="tt">${esc(d.title)}</span><span class="meta"><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span>${p[1]}</span></span><span class="meta"><span class="pill st-${esc(d.status)}">${stName(d.status)}</span>${fmt(d)}</span></button><button class="btn sm" data-plan="${esc(d.id)}" title="Planejar na semana exibida"><svg class="ic s" aria-hidden="true"><use href="#i-arrow"/></svg>Trazer</button></div>`}).join(''):`<p class="e">${e}</p>`}</div>`).join('');
   $('#outside').textContent='';
   $('#sample').textContent=S.sample?'Demandas e sistemas de exemplo — edite ou exclua à vontade.':'';
   $('#legend').innerHTML=ST.map(([k,l])=>`<span><i class="st-${k}"></i>${l}</span>`).join('');
