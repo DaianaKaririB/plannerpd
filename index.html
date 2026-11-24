@@ -401,7 +401,7 @@ function render(){
     const cl=a<mon,cr=b>last;
     if(si>n-1){si=n-1}if(ei<si){ei=si}
     const range=+a===+b?`${a.getDate()} ${M[a.getMonth()]}`:`${a.getDate()}${a.getMonth()===b.getMonth()?'':' '+M[a.getMonth()]}–${b.getDate()} ${M[b.getMonth()]}`;
-    h+=`<div class="row"><button class="lab" data-id="${esc(d.id)}"><span class="stag" style="--c:${esc(s.color)};--tc:${tcol(s.color)}"><i></i>${esc(s.name)}</span><span class="tt">${esc(d.title)}</span><span class="meta"><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span><span class="prt">${p[1]}</span></span></span></button>`+
+    h+=`<div class="row"><button class="lab" data-id="${esc(d.id)}"><span class="tt">${esc(d.title)}</span><span class="stag" style="--c:${esc(s.color)};--tc:${tcol(s.color)}"><i></i>${esc(s.name)}</span><span class="meta"><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span><span class="prt">${p[1]}</span></span></span></button>`+
       days.map((x,i)=>`<div class="day${isT(x)?' today':''}" style="grid-column:${i+2}"></div>`).join('')+
       `<button class="bar st-${esc(d.status)}${cl?' cl':''}${cr?' cr':''}" data-id="${esc(d.id)}" style="grid-column:${si+2}/${ei+3}" title="${esc(d.title)} · ${stName(d.status)} · ${range}"><strong>${cl?'‹ ':''}${stName(d.status)}${cr?' ›':''}</strong><span>${range}</span></button></div>`;
   }
@@ -417,7 +417,7 @@ function render(){
   const nb=groups.reduce((t,g)=>t+g[2].length,0);
   $('#blT').textContent=`${nb} demanda${nb===1?'':'s'}`;
   $('#bl').innerHTML=nb?'':'<p class="note" style="margin:0">Backlog vazio.</p>';$('#bl').innerHTML+=groups.filter(g=>g[2].length).map(([t,ic,ds,e])=>`<div class="col"><h3><span class="t"><span class="ib"><svg class="ic" aria-hidden="true"><use href="#i-${ic}"/></svg></span>${t}</span><span class="c">${ds.length}</span></h3>${ds.length?ds.map(d=>{const s=sysOf(d.sys),p=prOf(d.pri);
-    return `<div class="card"><button class="open" data-id="${esc(d.id)}"><span class="stag" style="--c:${esc(s.color)};--tc:${tcol(s.color)}"><i></i>${esc(s.name)}</span><span class="tt">${esc(d.title)}</span><span class="meta"><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span>${p[1]}</span></span><span class="meta"><span class="pill st-${esc(d.status)}">${stName(d.status)}</span>${fmt(d)}</span></button><button class="btn sm" data-plan="${esc(d.id)}" title="Planejar na semana exibida"><svg class="ic s" aria-hidden="true"><use href="#i-arrow"/></svg>Trazer</button></div>`}).join(''):`<p class="e">${e}</p>`}</div>`).join('');
+    return `<div class="card"><button class="open" data-id="${esc(d.id)}"><span class="tt">${esc(d.title)}</span><span class="stag" style="--c:${esc(s.color)};--tc:${tcol(s.color)}"><i></i>${esc(s.name)}</span><span class="meta"><span class="pr" title="Prioridade ${p[1]}"><span class="sig l${p[2]}"><i></i><i></i><i></i></span>${p[1]}</span></span><span class="meta"><span class="pill st-${esc(d.status)}">${stName(d.status)}</span>${fmt(d)}</span></button><button class="btn sm" data-plan="${esc(d.id)}" title="Planejar na semana exibida"><svg class="ic s" aria-hidden="true"><use href="#i-arrow"/></svg>Trazer</button></div>`}).join(''):`<p class="e">${e}</p>`}</div>`).join('');
   $('#outside').textContent='';
   $('#sample').textContent=S.sample?'Demandas e sistemas de exemplo — edite ou exclua à vontade.':'';
   $('#legend').innerHTML=ST.map(([k,l])=>`<span><i class="st-${k}"></i>${l}</span>`).join('');
