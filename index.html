@@ -153,11 +153,27 @@ h2{font-size:22px;margin:0 0 12px;line-height:1.2}
 .lr .a{font-size:12px;font-weight:700;color:var(--blue)}
 .lr.off{opacity:.5}
 .lr.off .n{background:var(--gray)!important;color:var(--mute)}
-dialog{border:0;border-radius:30px;padding:0;width:min(560px,calc(100vw - 24px));background:var(--card);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+dialog{border:0;border-radius:30px;padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--card);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
 dialog::backdrop{background:rgba(var(--shadow),.6)}
 .dl{padding:22px}
 .dl h3{margin:0 0 14px;font-family:Caveat,cursive;font-size:34px;line-height:1}
 .fg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#dlg{width:min(760px,calc(100vw - 24px))}
+#form{padding:18px 22px}
+#form .dhead{margin-bottom:10px}
+#form h3{font-size:30px}
+#form .fg{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 12px}
+#form .c2{grid-column:span 2}
+#form .field{min-height:40px}
+#form label.f,#form .f{gap:4px;font-size:13px}
+.fl{font-size:13px;font-weight:600}
+#form .seg label>span{min-height:34px;padding:0 12px;font-size:13px}
+#form textarea.field{min-height:56px}
+#form .chk{min-height:40px;font-size:14px}
+#form .err{min-height:0;margin:6px 0 0}
+#form .err:empty{display:none}
+#form .acts{margin-top:12px}
+@media(max-width:600px){#form{padding:16px}#form h3{font-size:26px}#form .btn.jira{min-height:34px;padding:0 12px;font-size:13px}#form .seg{gap:5px}#form .seg label>span{padding:0 9px;font-size:12.5px;min-height:32px}#form .chk{min-height:32px}#form .fg{grid-template-columns:1fr 1fr}#form .c2,#form .full{grid-column:1/-1}}
 .fg .full{grid-column:1/-1}
 label.f{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:600}
 label.f .field{width:100%;font-weight:400}
@@ -209,7 +225,7 @@ textarea.field{padding:10px 12px;min-height:80px;resize:vertical}
 .jt{display:inline-flex;align-items:center;gap:4px;color:var(--blue);font-weight:600}
 .jt .ic{width:13px;height:13px}
 .note{font-size:13px;color:var(--mute);margin:10px 4px 0}
-@media(max-width:600px){.grid{--lab:150px}.lab{padding:10px}.meta .prt{display:none}.fg{grid-template-columns:1fr}.bar span{display:none}.hrow{align-items:flex-start}}
+@media(max-width:600px){.grid{--lab:150px}.lab{padding:10px}.meta .prt{display:none}#sdlg .fg{grid-template-columns:1fr}.bar span{display:none}.hrow{align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){.bar{transition:none}}
 </style>
 </head>
@@ -293,14 +309,14 @@ textarea.field{padding:10px 12px;min-height:80px;resize:vertical}
   <div class="dhead"><h3 id="dlgT">Nova demanda</h3><a class="btn jira" id="jiraBtn" target="_blank" rel="noopener noreferrer" hidden><svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg>Acessar Jira</a></div>
   <div class="fg">
     <label class="f full">Título<input class="field" id="iT" required maxlength="120"></label>
-    <label class="f">Sistema<select class="field" id="iS"></select></label>
-    <label class="chk"><input type="checkbox" id="iBl"> Sem prazo (fica no backlog)</label>
+    <label class="f c2">Sistema<select class="field" id="iS"></select></label>
+    <label class="f c2">Link do Jira<input class="field" id="iJ" type="url" inputmode="url" placeholder="https://…/browse/UX-123" maxlength="500"></label>
     <label class="f">Início<input class="field" type="date" id="iA" required></label>
     <label class="f">Prazo final<input class="field" type="date" id="iB" required></label>
-    <div class="f full"><span style="font-size:14px;font-weight:600">Status</span><div class="seg" id="iSt"></div></div>
-    <div class="f full"><span style="font-size:14px;font-weight:600">Prioridade</span><div class="seg" id="iP"></div></div>
-    <label class="f full">Link do Jira<input class="field" id="iJ" type="url" inputmode="url" placeholder="https://suaempresa.atlassian.net/browse/UX-123" maxlength="500"></label>
-    <label class="f full">Observações<textarea class="field" id="iN" maxlength="600"></textarea></label>
+    <label class="chk c2"><input type="checkbox" id="iBl"> Sem prazo (vai para o backlog)</label>
+    <div class="f full"><span class="fl">Status</span><div class="seg" id="iSt"></div></div>
+    <div class="f full"><span class="fl">Prioridade</span><div class="seg" id="iP"></div></div>
+    <label class="f full">Observações<textarea class="field" id="iN" rows="2" maxlength="600"></textarea></label>
   </div>
   <p class="err" id="err"></p>
   <div class="acts">
