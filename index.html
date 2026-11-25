@@ -18,6 +18,11 @@ h1.ttl{font-family:'Sketchy Notes',Figtree,sans-serif;font-weight:400;font-size:
 .top{position:relative;overflow:hidden}
 .top .art{position:absolute;right:max(2vw,8px);top:50%;transform:translateY(-50%);width:min(440px,46vw);height:auto;opacity:.28;pointer-events:none}
 .top .wrap{position:relative;z-index:1}
+.art-rosa,.art-roxo,.art-azul{display:none}
+:root[data-scheme=rosa] .art-t,:root[data-scheme=roxo] .art-t,:root[data-scheme=azul] .art-t{display:none}
+:root[data-scheme=rosa] .art-rosa,:root[data-scheme=roxo] .art-roxo,:root[data-scheme=azul] .art-azul{display:inline}
+:root[data-scheme=rosa] .top .art{opacity:.42}
+
 .ttl{position:relative;display:inline-block}
 .ttl .scrib{position:absolute;left:-4px;right:-10px;bottom:-12px;height:16px;width:calc(100% + 14px)}
 .note-h{font-family:Caveat,cursive;font-size:22px;color:var(--acc-soft);margin-left:6px;transform:rotate(-3deg);display:inline-block}
@@ -258,7 +263,7 @@ textarea.field{padding:10px 12px;min-height:80px;resize:vertical}
 </defs></svg>
 <header class="top">
   <svg class="art" viewBox="0 0 440 220" aria-hidden="true"><g class="doodle" filter="url(#pencil)" stroke="#fff">
-<g opacity=".9" stroke-width="2.4">
+<g class="art-t"><g opacity=".9" stroke-width="2.4">
 <path d="M248 38c38-6 92-6 132 2 4 40 4 92-2 132-40 6-92 6-132-2-6-40-4-90 2-132z" fill="rgba(255,255,255,.08)"/>
 <path d="M251 41c36-4 88-4 126 3" stroke-width="1.2" opacity=".6"/>
 <path d="M248 72h132M247 105h134M249 139h130" stroke-width="1.6" opacity=".7"/>
@@ -271,6 +276,30 @@ textarea.field{padding:10px 12px;min-height:80px;resize:vertical}
 </g>
 <g class="wobble" stroke-width="2.4"><path d="M118 168 196 64l22 16-78 104-27 8z" style="fill:var(--acc);fill-opacity:.25"/><path d="M190 72l22 16M140 184l-14-11M113 192l7-10" /><path d="M200 59c6-8 18-4 22 4l-5 6"/><path d="M124 150c-8 10-30 18-58 12-20-4-36 4-44 16" stroke-dasharray="1 7" stroke-width="3"/></g>
 <g stroke-width="2.2"><path d="M60 50l4 12 12 4-12 4-4 12-4-12-12-4 12-4z" fill="rgba(255,255,255,.18)"/><path d="M412 196l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M100 104c10-14 26-4 18 6s-22 0-12-12 30-6 26 8"/><circle cx="410" cy="34" r="6"/><path d="M216 196c12-6 22 6 34 0s22 6 34 0"/></g>
+</g>
+<g class="art-rosa" stroke-width="2.4">
+<g class="wobble"><path d="M262 132c-24 2-32-28-12-38-4-28 30-40 46-22 8-28 58-30 66 2 28-6 42 32 18 48 4 18-14 28-30 22-12 14-40 14-52 0-14 8-34 4-36-12z" style="fill:#fff;fill-opacity:.12"/>
+<path d="M300 104q6-7 12 0M334 104q6-7 12 0"/><path d="M314 116q9 9 18 0"/>
+<circle cx="296" cy="116" r="5" style="fill:var(--acc);fill-opacity:.55;stroke:none"/><circle cx="350" cy="116" r="5" style="fill:var(--acc);fill-opacity:.55;stroke:none"/></g>
+<path transform="translate(282 160) scale(0.8)" d="M0 7C0-1 10-2 10 5 10-2 20-1 20 7 20 14 12 19 10 22 8 19 0 14 0 7z" style="fill:var(--acc);fill-opacity:.35" vector-effect="non-scaling-stroke"/><path transform="translate(318 176) scale(0.6)" d="M0 7C0-1 10-2 10 5 10-2 20-1 20 7 20 14 12 19 10 22 8 19 0 14 0 7z" vector-effect="non-scaling-stroke"/><path transform="translate(352 158) scale(0.7)" d="M0 7C0-1 10-2 10 5 10-2 20-1 20 7 20 14 12 19 10 22 8 19 0 14 0 7z" style="fill:var(--acc);fill-opacity:.35" vector-effect="non-scaling-stroke"/>
+<g transform="translate(140 120)"><ellipse cx="-14" cy="-38" rx="8" ry="22" transform="rotate(-12 -14 -38)"/><ellipse cx="14" cy="-38" rx="8" ry="22" transform="rotate(12 14 -38)"/>
+<ellipse cx="-14" cy="-38" rx="3" ry="12" transform="rotate(-12 -14 -38)" style="fill:var(--acc);fill-opacity:.4;stroke:none"/><ellipse cx="14" cy="-38" rx="3" ry="12" transform="rotate(12 14 -38)" style="fill:var(--acc);fill-opacity:.4;stroke:none"/>
+<circle r="28" style="fill:#fff;fill-opacity:.1"/><circle cx="-9" cy="-3" r="2.6" fill="#fff"/><circle cx="9" cy="-3" r="2.6" fill="#fff"/><path d="M-3 5q3 3 6 0M0 7v4M-6 13q6 5 12 0"/>
+<circle cx="-16" cy="7" r="4" style="fill:var(--acc);fill-opacity:.55;stroke:none"/><circle cx="16" cy="7" r="4" style="fill:var(--acc);fill-opacity:.55;stroke:none"/></g>
+<path transform="translate(200 40) scale(1.1)" d="M0 7C0-1 10-2 10 5 10-2 20-1 20 7 20 14 12 19 10 22 8 19 0 14 0 7z" style="fill:var(--acc);fill-opacity:.35" vector-effect="non-scaling-stroke"/><path d="M60 48l3.5999999999999996 8.399999999999999 8.399999999999999 3.5999999999999996-8.399999999999999 3.5999999999999996-3.5999999999999996 8.399999999999999-3.5999999999999996-8.399999999999999-8.399999999999999-3.5999999999999996 8.399999999999999-3.5999999999999996z"/><path d="M412 188l2.4 5.6 5.6 2.4-5.6 2.4-2.4 5.6-2.4-5.6-5.6-2.4 5.6-2.4z"/><path d="M420 31l2.6999999999999997 6.3 6.3 2.6999999999999997-6.3 2.6999999999999997-2.6999999999999997 6.3-2.6999999999999997-6.3-6.3-2.6999999999999997 6.3-2.6999999999999997z"/><circle cx="226" cy="190" r="3"/><circle cx="96" cy="190" r="2.5"/>
+<path d="M30 170q10-14 20 0t20 0" /></g>
+<g class="art-roxo" stroke-width="2.4">
+<path class="wobble" d="M330 40a62 62 0 1 0 54 92 50 50 0 1 1-54-92z" style="fill:#fff;fill-opacity:.1"/>
+<g transform="translate(160 120)"><circle r="30" style="fill:var(--acc);fill-opacity:.2"/><ellipse rx="52" ry="13" transform="rotate(-18)"/><path d="M-22-14q10-6 22-4" opacity=".7"/></g>
+<path d="M232 186 286 132"/><path d="M286 116l5 11 12 2-9 8 2 12-10-6-11 6 2-12-9-8 12-2z" style="fill:var(--acc);fill-opacity:.35"/>
+<path d="M60 44l3.5999999999999996 8.399999999999999 8.399999999999999 3.5999999999999996-8.399999999999999 3.5999999999999996-3.5999999999999996 8.399999999999999-3.5999999999999996-8.399999999999999-8.399999999999999-3.5999999999999996 8.399999999999999-3.5999999999999996z"/><path d="M250 41l2.6999999999999997 6.3 6.3 2.6999999999999997-6.3 2.6999999999999997-2.6999999999999997 6.3-2.6999999999999997-6.3-6.3-2.6999999999999997 6.3-2.6999999999999997z"/><path d="M416 188l2.4 5.6 5.6 2.4-5.6 2.4-2.4 5.6-2.4-5.6-5.6-2.4 5.6-2.4z"/><path d="M80 183l2.1 4.8999999999999995 4.8999999999999995 2.1-4.8999999999999995 2.1-2.1 4.8999999999999995-2.1-4.8999999999999995-4.8999999999999995-2.1 4.8999999999999995-2.1z"/><circle cx="410" cy="30" r="3"/><circle cx="214" cy="96" r="2.5"/><circle cx="40" cy="120" r="2"/>
+<path d="M240 186c-14 4-30 0-40-10" stroke-dasharray="1 7" stroke-width="3"/></g>
+<g class="art-azul" stroke-width="2.4">
+<g class="wobble"><path d="M250 90 400 40 340 160 312 118z" style="fill:#fff;fill-opacity:.1"/><path d="M312 118 400 40M312 118l-6 34 22-20"/></g>
+<path d="M250 100c-40 10-70 50-120 40-34-7-40-40-14-44 24-3 26 30 0 50" stroke-dasharray="1 8" stroke-width="3"/>
+<g transform="translate(70 120)"><path d="M0 0h52v34a18 18 0 0 1-18 18H18A18 18 0 0 1 0 34z" style="fill:#fff;fill-opacity:.1"/><path d="M52 8h8a10 10 0 0 1 0 20h-8"/><path d="M14-12q-6-8 0-16M26-12q-6-8 0-16M38-12q-6-8 0-16"/></g>
+<path d="M330 196c-16 0-20-18-6-22 0-14 20-18 28-6 10-8 26 0 22 12 12 2 10 16-2 16z" style="fill:#fff;fill-opacity:.08"/>
+<path d="M200 30l3.0 7.0 7.0 3.0-7.0 3.0-3.0 7.0-3.0-7.0-7.0-3.0 7.0-3.0z"/><path d="M420 189l2.1 4.8999999999999995 4.8999999999999995 2.1-4.8999999999999995 2.1-2.1 4.8999999999999995-2.1-4.8999999999999995-4.8999999999999995-2.1 4.8999999999999995-2.1z"/><circle cx="170" cy="190" r="3"/><circle cx="420" cy="110" r="2.5"/></g>
 </g></svg>
   <div class="wrap">
     <div class="hrow">
